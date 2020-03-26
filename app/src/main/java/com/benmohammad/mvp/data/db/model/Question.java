@@ -7,12 +7,15 @@ import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+
+
 import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
+
 
 @Entity(nameInDb = "questions")
 public class Question {
@@ -43,7 +46,7 @@ public class Question {
     private String updatedAt;
 
     @ToMany(referencedJoinProperty = "questionId")
-    private List<Option>  optionList;
+    private List<Option> optionList;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
@@ -53,21 +56,8 @@ public class Question {
     @Generated(hash = 891254763)
     private transient QuestionDao myDao;
 
-
-
-
-    public Question(Long id, String questionText, String createdAt, String updatedAt) {
-        this.id = id;
-        this.questionText = questionText;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Question(){}
-
     @Generated(hash = 103353390)
-    public Question(Long id, String questionText, String imgUrl, String createdAt,
-            String updatedAt) {
+    public Question(Long id, String questionText, String imgUrl, String createdAt, String updatedAt) {
         this.id = id;
         this.questionText = questionText;
         this.imgUrl = imgUrl;
@@ -75,8 +65,12 @@ public class Question {
         this.updatedAt = updatedAt;
     }
 
+    @Generated(hash = 1868476517)
+    public Question() {
+    }
+
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -84,27 +78,11 @@ public class Question {
     }
 
     public String getQuestionText() {
-        return questionText;
+        return this.questionText;
     }
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public String getImgUrl() {
@@ -113,6 +91,22 @@ public class Question {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     /**
@@ -185,4 +179,7 @@ public class Question {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getQuestionDao() : null;
     }
+
+
+
 }

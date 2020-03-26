@@ -5,9 +5,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
+import org.greenrobot.greendao.annotation.Generated;
 
 
 @Entity(nameInDb = "options")
@@ -44,7 +44,8 @@ public class Option {
     private String updatedAt;
 
     @Generated(hash = 435722130)
-    public Option(Long id, String optionText, Long questionId, boolean isCorrect, String createdAt, String updatedAt) {
+    public Option(Long id, String optionText, Long questionId, boolean isCorrect,
+            String createdAt, String updatedAt) {
         this.id = id;
         this.optionText = optionText;
         this.questionId = questionId;
@@ -54,10 +55,11 @@ public class Option {
     }
 
     @Generated(hash = 104107376)
-    public Option(){}
+    public Option() {
+    }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -65,7 +67,7 @@ public class Option {
     }
 
     public String getOptionText() {
-        return optionText;
+        return this.optionText;
     }
 
     public void setOptionText(String optionText) {
@@ -73,35 +75,11 @@ public class Option {
     }
 
     public Long getQuestionId() {
-        return questionId;
+        return this.questionId;
     }
 
     public void setQuestionId(Long questionId) {
         this.questionId = questionId;
-    }
-
-    public boolean isCorrect() {
-        return isCorrect;
-    }
-
-    public void setCorrect(boolean correct) {
-        isCorrect = correct;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public boolean getIsCorrect() {
@@ -111,4 +89,24 @@ public class Option {
     public void setIsCorrect(boolean isCorrect) {
         this.isCorrect = isCorrect;
     }
+
+    public String getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+
+
+
 }
