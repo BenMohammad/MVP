@@ -12,6 +12,7 @@ public class ApiHeader {
 
 
     private ProtectedApiHeader mProtectedApiHeader;
+
     private PublicApiHeader mPublicApiHeader;
 
     @Inject
