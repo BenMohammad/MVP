@@ -87,7 +87,7 @@ public class ApiHeader {
             return mAccessToken;
         }
 
-        public void setmAccessToken(String mAccessToken) {
+        public void setAccessToken(String mAccessToken) {
             this.mAccessToken = mAccessToken;
         }
     }
