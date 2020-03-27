@@ -1,8 +1,10 @@
-package com.benmohammad.mvp;
+package com.benmohammad.mvp.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.benmohammad.mvp.R;
 
 public class MainActivity extends AppCompatActivity {
 

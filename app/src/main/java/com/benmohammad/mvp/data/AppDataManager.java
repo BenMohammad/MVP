@@ -60,6 +60,13 @@ public class AppDataManager implements DataManager {
 
     @Override
     public void setUserAsLoggedOut() {
+        updateUserInfo(
+                null,
+                null,
+                DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
+                null, null, null);
+
+
 
     }
 
@@ -114,7 +121,14 @@ public class AppDataManager implements DataManager {
 
     @Override
     public void updateUserInfo(String accessToken, Long userId, LoggedInMode loggedInMode, String userName, String email, String profilePicPath) {
+        setAccessToken(accessToken);
+        setCurrentUserId(userId);
+        setCurrentUserLoggedInMode(loggedInMode);
+        setCurrentUserName(userName);
+        setCurrentUserEmail(email);
+        setCurrentUserProfilePic(profilePicPath);
 
+        updateApiHeader(userId, accessToken);
     }
 
     @Override
@@ -129,37 +143,37 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Observable<List<Question>> getAllQuestions() {
-        return null;
+        return dbHelper.getAllQuestions();
     }
 
     @Override
     public Observable<Boolean> isQuestionEmpty() {
-        return null;
+        return dbHelper.isQuestionEmpty();
     }
 
     @Override
     public Observable<Boolean> isOptionEmpty() {
-        return null;
+        return dbHelper.isOptionEmpty();
     }
 
     @Override
     public Observable<Boolean> saveQuestion(Question question) {
-        return null;
+        return dbHelper.saveQuestion(question);
     }
 
     @Override
     public Observable<Boolean> saveOption(Option option) {
-        return null;
+        return dbHelper.saveOption(option);
     }
 
     @Override
     public Observable<Boolean> saveQuestionList(List<Question> questionList) {
-        return null;
+        return dbHelper.saveQuestionList(questionList);
     }
 
     @Override
     public Observable<Boolean> saveOptionList(List<Option> optionList) {
-        return null;
+        return dbHelper.saveOptionList(optionList);
     }
 
     @Override
@@ -169,82 +183,82 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Single<LoginResponse> doGoogleLoginCall(LoginRequest.GoogleLoginRequest request) {
-        return null;
+        return apiHelper.doGoogleLoginCall(request);
     }
 
     @Override
     public Single<LoginResponse> doFacebookLoginCall(LoginRequest.FacebookLoginRequest request) {
-        return null;
+        return apiHelper.doFacebookLoginCall(request);
     }
 
     @Override
     public Single<LoginResponse> doServerLoginCall(LoginRequest.ServerLoginRequest request) {
-        return null;
+        return apiHelper.doServerLoginCall(request);
     }
 
     @Override
     public Single<LogoutResponse> doLogoutApiCall() {
-        return null;
+        return apiHelper.doLogoutApiCall();
     }
 
     @Override
     public Single<BlogResponse> getBlogApiCall() {
-        return null;
+        return apiHelper.getBlogApiCall();
     }
 
     @Override
     public Single<OpenSourceResponse> getOpenSourceApiCall() {
-        return null;
+        return apiHelper.getOpenSourceApiCall();
     }
 
     @Override
     public int getCurrentUserLoggedInMode() {
-        return 0;
+        return preferencesHelper.getCurrentUserLoggedInMode();
     }
 
     @Override
     public void setCurrentUserLoggedInMode(LoggedInMode mode) {
-
+        preferencesHelper.setCurrentUserLoggedInMode(mode);
     }
 
     @Override
     public Long getCurrentUserId() {
-        return null;
+        return preferencesHelper.getCurrentUserId();
     }
 
     @Override
     public void setCurrentUserId(Long userId) {
-
+        preferencesHelper.setCurrentUserId(userId);
     }
 
     @Override
     public String getCurrentUserName() {
-        return null;
+        return preferencesHelper.getCurrentUserName();
     }
 
     @Override
     public void setCurrentUserName(String userName) {
-
+        preferencesHelper.setCurrentUserName(userName);
     }
 
     @Override
     public String getCurrentUserEmail() {
-        return null;
+        return preferencesHelper.getCurrentUserEmail();
     }
 
     @Override
     public void setCurrentUserEmail(String email) {
-
+        preferencesHelper.setCurrentUserEmail(email);
     }
 
     @Override
     public String getCurrentUserProfilePic() {
-        return null;
+        return preferencesHelper.getCurrentUserProfilePic();
     }
 
     @Override
     public void setCurrentUserProfilePic(String profilePicUrl) {
-
+        preferencesHelper.setCurrentUserProfilePic(profilePicUrl);
     }
 
     @Override
