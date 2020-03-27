@@ -55,6 +55,12 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
+    public void addItems(List<BlogResponse.Blog> blogList) {
+        this.blogList.addAll(blogList);
+        notifyDataSetChanged();
+
+    }
+
 
     @Override
     public int getItemViewType(int position) {
