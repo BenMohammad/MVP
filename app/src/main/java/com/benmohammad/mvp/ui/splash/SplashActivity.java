@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-import com.benmohammad.mvp.R;
 import com.benmohammad.mvp.ui.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -41,6 +40,11 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Override
     public void startSyncService() {
+
+    }
+
+    @Override
+    protected void setUp() {
 
     }
 }

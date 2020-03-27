@@ -2,7 +2,9 @@ package com.benmohammad.mvp.ui.base;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
+import butterknife.Unbinder;
+
+public abstract class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
 
 
     @Override
@@ -59,4 +61,10 @@ public class BaseActivity extends AppCompatActivity implements MvpView, BaseFrag
     public void hideKeyboard() {
 
     }
+
+    public void setUnBinder(Unbinder unBinder) {
+        unBinder.unbind();
+    }
+
+    protected abstract void setUp();
 }
