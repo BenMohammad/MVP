@@ -192,8 +192,8 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<LoginResponse> doServerLoginCall(LoginRequest.ServerLoginRequest request) {
-        return apiHelper.doServerLoginCall(request);
+    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request) {
+        return apiHelper.doServerLoginApiCall(request);
     }
 
     @Override

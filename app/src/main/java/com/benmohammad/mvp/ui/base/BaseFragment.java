@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.benmohammad.mvp.di.component.ActivityComponent;
 import com.benmohammad.mvp.utils.CommonUtils;
 
 import butterknife.Unbinder;
@@ -119,6 +120,14 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
         super.onDestroy();
 
+    }
+
+    public ActivityComponent getActivityComponent() {
+        if(activity != null) {
+            return activity.getActivityComponent();
+        }
+
+        return null;
     }
 
     @Override

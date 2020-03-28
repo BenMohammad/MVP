@@ -25,7 +25,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class BasePresenter <V extends MvpView> implements MvpPresenter<V> {
 
     private static final String TAG = "BasePresenter";
-    //private final DataManager dataManager;
+
 
     private final DataManager dataManager;
     private final SchedulerProvider schedulerProvider;

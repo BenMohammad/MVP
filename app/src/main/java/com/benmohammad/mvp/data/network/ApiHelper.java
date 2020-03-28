@@ -13,7 +13,7 @@ public interface ApiHelper {
     ApiHeader getApiHeader();
     Single<LoginResponse> doGoogleLoginCall(LoginRequest.GoogleLoginRequest request);
     Single<LoginResponse> doFacebookLoginCall(LoginRequest.FacebookLoginRequest request);
-    Single<LoginResponse> doServerLoginCall(LoginRequest.ServerLoginRequest request);
+    Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
     Single<LogoutResponse> doLogoutApiCall();
     Single<BlogResponse> getBlogApiCall();
     Single<OpenSourceResponse> getOpenSourceApiCall();

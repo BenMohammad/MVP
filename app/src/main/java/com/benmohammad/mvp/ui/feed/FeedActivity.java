@@ -49,6 +49,8 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
+        getActivityComponent().inject(this);
+
         setUnBinder(ButterKnife.bind(this));
         presenter.onAttach(this);
         setUp();

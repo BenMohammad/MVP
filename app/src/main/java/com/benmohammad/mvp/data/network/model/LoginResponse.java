@@ -13,7 +13,7 @@ public class LoginResponse {
 
     @Expose
     @SerializedName("user_id")
-    private String userId;
+    private Long userId;
 
     @Expose
     @SerializedName("access_token")
@@ -51,11 +51,11 @@ public class LoginResponse {
         this.statusCode = statusCode;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
