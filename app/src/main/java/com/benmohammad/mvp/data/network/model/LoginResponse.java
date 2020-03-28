@@ -118,7 +118,7 @@ public class LoginResponse {
     @Override
     public boolean equals(@Nullable Object obj) {
         if(this == obj) return true;
-        if(obj != null || getClass() != obj.getClass()) return false;
+        if(obj == null || getClass() != obj.getClass()) return false;
 
         LoginResponse that = (LoginResponse) obj;
 

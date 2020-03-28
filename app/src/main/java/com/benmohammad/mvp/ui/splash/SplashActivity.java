@@ -35,7 +35,8 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         getActivityComponent().inject(this);
         setUnBinder(ButterKnife.bind(this));
         presenter.onAttach(this);
-        openMainActivity();
+        startSyncService();
+        openLoginActivity();
 
     }
 

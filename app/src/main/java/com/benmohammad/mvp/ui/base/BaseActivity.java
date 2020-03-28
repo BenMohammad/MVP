@@ -11,6 +11,7 @@ import com.benmohammad.mvp.MvpApp;
 import com.benmohammad.mvp.di.component.ActivityComponent;
 import com.benmohammad.mvp.di.component.DaggerActivityComponent;
 import com.benmohammad.mvp.di.module.ActivityModule;
+import com.benmohammad.mvp.ui.login.LoginActivity;
 import com.benmohammad.mvp.utils.CommonUtils;
 
 import butterknife.Unbinder;
@@ -53,17 +54,20 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 
     @Override
     public void hideLoading() {
-
+        if(dialog != null && dialog.isShowing()) {
+            dialog.cancel();
+        }
     }
 
     @Override
     public void openActivityOnTokenExpire() {
-
+        startActivity(LoginActivity.startIntent(this));
+        finish();
     }
 
     @Override
     public void onError(int resId) {
-
+        onError(getString(resId));
     }
 
     @Override
@@ -92,7 +96,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     }
 
     public void setUnBinder(Unbinder unBinder) {
-        unBinder.unbind();
+        this.unbinder = unBinder;
     }
 
     @Override

@@ -311,4 +311,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public void onFragmentAttached() {
+        super.onFragmentAttached();
+    }
 }

@@ -8,7 +8,11 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
+import com.benmohammad.mvp.MvpApp;
 import com.benmohammad.mvp.data.DataManager;
+import com.benmohammad.mvp.di.component.DaggerServiceComponent;
+import com.benmohammad.mvp.di.component.ServiceComponent;
+import com.benmohammad.mvp.utils.AppLogger;
 
 import javax.inject.Inject;
 
@@ -16,7 +20,7 @@ public class SyncService extends Service {
 
     private static final String TAG = "SyncService";
 
-    //@Inject
+    @Inject
     DataManager dataManager;
 
     public static Intent getStartIntent(Context context) {
@@ -36,7 +40,23 @@ public class SyncService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        ServiceComponent component = DaggerServiceComponent.builder()
+                .applicationComponent(((MvpApp)getApplication()).getComponent()).build();
 
+        component.inject(this);
+
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        AppLogger.d(TAG, "SyncService started");
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        AppLogger.d(TAG, "Sync stopped");
+        super.onDestroy();
     }
 
     @Nullable

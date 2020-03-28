@@ -141,7 +141,7 @@ public class LoginRequest {
         @Override
         public boolean equals(@Nullable Object obj) {
             if(this == obj) return true;
-            if(obj != null || getClass() != obj.getClass()) return false;
+            if(obj == null || getClass() != obj.getClass()) return false;
 
             FacebookLoginRequest that = (FacebookLoginRequest) obj;
 

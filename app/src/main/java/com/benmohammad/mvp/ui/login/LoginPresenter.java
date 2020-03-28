@@ -138,7 +138,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager()
-        .doFacebookLoginCall(new LoginRequest.FacebookLoginRequest("test£", "test3"))
+        .doFacebookLoginCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
         .subscribeOn(getSchedulerProvider().io())
         .observeOn(getSchedulerProvider().ui())
         .subscribe(new Consumer<LoginResponse>() {

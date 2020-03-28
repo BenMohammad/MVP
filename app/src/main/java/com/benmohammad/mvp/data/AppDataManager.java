@@ -26,12 +26,14 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
+@Singleton
 public class AppDataManager implements DataManager {
 
     private static final String TAG = "AppDataManager";

@@ -1,13 +1,11 @@
 package com.benmohammad.mvp.data.network;
 
-import android.os.Build;
 
-import com.benmohammad.mvp.BuildConfig;
 
 public final class ApiEndPoint {
 
-    public static final String BASE_URL = "\"http://www.mocky.io/v2\"";
-    public static final String API_KEY = "\"ABCXYZ123TEST\"";
+    public static final String BASE_URL = "https://www.mocky.io/v2";
+    public static final String API_KEY = "ABCXYZ123TEST";
 
     public static final String ENDPOINT_GOOGLE_LOGIN = BASE_URL
             + "/588d14f4100000a9072d2943";
@@ -31,6 +29,10 @@ public final class ApiEndPoint {
     private ApiEndPoint() {
         // This class is not publicly instantiable
     }
+
+
+
+
 
 
 }
