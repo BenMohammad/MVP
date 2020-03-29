@@ -25,6 +25,7 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> i
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
 
+        getMvpView().startSyncService();
 
         getCompositeDisposable().add(getDataManager()
         .seedDatabaseQuestions()

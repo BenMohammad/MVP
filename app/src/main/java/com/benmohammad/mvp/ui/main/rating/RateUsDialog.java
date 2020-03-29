@@ -23,6 +23,7 @@ import com.benmohammad.mvp.utils.AppUtils;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
@@ -60,8 +61,14 @@ public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_rate_us, container, false);
 
+        ActivityComponent component = getActivityComponent();
+        if(component != null) {
+            component.inject(this);
+            setUnBinder(ButterKnife.bind(this, view));
+            presenter.onAttach(this);
+        }
 
-        getActivityComponent().inject(this);
+
 
         return view;
 
@@ -122,6 +129,8 @@ public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
     void onPlayStoreRateClick() {
         presenter.onPlayStoreRatingClicked();
     }
+
+
 
 
 

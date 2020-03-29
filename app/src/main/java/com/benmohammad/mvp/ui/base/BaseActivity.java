@@ -1,6 +1,9 @@
 package com.benmohammad.mvp.ui.base;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -108,4 +111,19 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     }
 
     protected abstract void setUp();
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public void requestPermissionSafely(String[] permissions, int requestCode) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(permissions, requestCode);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    public boolean hasPermission(String permission) {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M || checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+    }
+
+
+
 }

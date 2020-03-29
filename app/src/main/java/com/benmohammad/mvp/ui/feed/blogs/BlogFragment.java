@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.benmohammad.mvp.R;
 import com.benmohammad.mvp.data.network.model.BlogResponse;
+import com.benmohammad.mvp.di.component.ActivityComponent;
+import com.benmohammad.mvp.di.component.DaggerActivityComponent;
 import com.benmohammad.mvp.ui.base.BaseFragment;
 
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class BlogFragment extends BaseFragment implements BlogMvpView, BlogAdapter.Callback{
 
@@ -49,6 +52,14 @@ public class BlogFragment extends BaseFragment implements BlogMvpView, BlogAdapt
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blog, container, false);
+
+        ActivityComponent component = getActivityComponent();
+        if(component != null) {
+            component.inject(this);
+            setUnbinder(ButterKnife.bind(this, view));
+            presenter.onAttach(this);
+            blogAdapter.setCallback(this);
+        }
         return view;
     }
 

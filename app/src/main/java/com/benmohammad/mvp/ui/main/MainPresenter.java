@@ -1,5 +1,7 @@
 package com.benmohammad.mvp.ui.main;
 
+import android.util.Log;
+
 import com.androidnetworking.error.ANError;
 import com.benmohammad.mvp.data.DataManager;
 import com.benmohammad.mvp.data.db.model.Question;

@@ -8,7 +8,7 @@ public class ScreenUtils {
 
     private ScreenUtils(){}
 
-    public static int gteScreenWidth(Context context) {
+    public static int geeScreenWidth(Context context) {
         WindowManager windowManager = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
 

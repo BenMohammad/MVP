@@ -89,6 +89,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if(drawer != null) {
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG);
@@ -127,7 +135,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     private void setUpCardContainerView() {
-        int screenWidth = ScreenUtils.gteScreenWidth(this);
+        int screenWidth = ScreenUtils.geeScreenWidth(this);
         int screenHeight = ScreenUtils.getScreenHeight(this);
 
         cardContainerView.getBuilder()
@@ -195,13 +203,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showAboutFragment() {
-        RateUsDialog.newInstance().show(getSupportFragmentManager());
+        lockDrawer();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
+                .commit();
     }
 
     @Override
     public void refreshQuestionnaire(List<Question> questionList) {
         for(Question question : questionList) {
-            if(question != null && question.getOptionList() != null && question.getOptionList().size() > 3) {
+            if(question != null && question.getOptionList() != null && question.getOptionList().size() == 3) {
                 cardContainerView.addView(new QuestionCard(question));
             }
         }
@@ -314,6 +328,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onFragmentAttached() {
-        super.onFragmentAttached();
+
     }
 }

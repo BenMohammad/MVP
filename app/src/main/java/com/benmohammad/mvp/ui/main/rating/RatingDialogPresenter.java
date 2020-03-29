@@ -42,6 +42,7 @@ public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePr
         }
 
         getMvpView().showLoading();
+        getMvpView().hideLoading();
         getMvpView().showMessage(R.string.rating_thanks);
         getMvpView().dismissDialog();
     }
